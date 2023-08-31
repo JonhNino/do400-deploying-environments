@@ -19,7 +19,7 @@ pipeline {
                 archiveArtifacts 'target/*.jar'
             }
         }
-         stage('Build Image') {
+        stage('Build Image') {
             environment { QUAY = credentials('jnino') } 1
             steps {
                 sh '''
