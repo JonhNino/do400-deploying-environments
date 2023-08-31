@@ -20,7 +20,7 @@ pipeline {
             }
         }
          stage('Build Image') {
-            environment { QUAY = credentials('QUAY_USER') } 1
+            environment { QUAY = credentials('jnino') } 1
             steps {
                 sh '''
                     ./mvnw quarkus:add-extension \
@@ -31,10 +31,10 @@ pipeline {
                     -Dquarkus.jib.base-jvm-image=quay.io/redhattraining/do400-java-alpine-openjdk11-jre:latest \
                     -Dquarkus.container-image.build=true \ 3
                     -Dquarkus.container-image.registry=quay.io \ 4
-                    -Dquarkus.container-image.group=$QUAY_USR \ 5
+                    -Dquarkus.container-image.group=jnino \ 5
                     -Dquarkus.container-image.name=do400-deploying-environments \ 6
-                    -Dquarkus.container-image.username=$QUAY_USR \ 7
-                    -Dquarkus.container-image.password="$QUAY_PSW" \ 8
+                    -Dquarkus.container-image.username=jnino \ 7
+                    -Dquarkus.container-image.password="Jonh24680" \ 8
                     -Dquarkus.container-image.push=true 9
                 '''
             }
